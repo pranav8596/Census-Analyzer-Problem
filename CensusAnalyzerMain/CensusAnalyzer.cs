@@ -12,29 +12,30 @@ namespace CensusAnalyzerMain
     {
         public static int LoadIndiaCensusData(string indiaCensusCSVFilePath)
         {
-            FileInfo fileInfo = new FileInfo(indiaCensusCSVFilePath);
-            string typeOfFile = fileInfo.Extension;
-            string expectedType = ".csv";
+            try
+            {
+                FileInfo fileInfo = new FileInfo(indiaCensusCSVFilePath);
+                string typeOfFile = fileInfo.Extension;
+                string expectedType = ".csv";
 
-            if (typeOfFile == expectedType)
-            {
-                if (indiaCensusCSVFilePath != @"D:\source\repos\CensusAnalyzerProblem\CensusAnalyzerTest\resources\IndiaStateCensusData.csv")
+                if (typeOfFile != expectedType)
                 {
-                    throw new CensusAnalyzerExceptions("CSV file path is Incorrect", CensusAnalyzerExceptions.ExceptionType.WRONG_FILE_PATH);
+                    throw new CensusAnalyzerExceptions("CSV file type is Incorrect", CensusAnalyzerExceptions.ExceptionType.WRONG_FILE_TYPE);
+                }               
+                int numberOfRecords = 0;
+                StreamReader readCsvData = new StreamReader(indiaCensusCSVFilePath);
+                CsvReader loadCsvData = new CsvReader(readCsvData, true);
+                while (loadCsvData.ReadNextRecord())
+                {
+                    numberOfRecords++;
                 }
+                return numberOfRecords;
             }
-            else
+            catch (DirectoryNotFoundException e)
             {
-                throw new CensusAnalyzerExceptions("CSV file type is Incorrect", CensusAnalyzerExceptions.ExceptionType.WRONG_FILE_TYPE);
+                throw new CensusAnalyzerExceptions("CSV file path is Incorrect", CensusAnalyzerExceptions.ExceptionType.WRONG_FILE_PATH);
             }
-            int numberOfRecords = 0;
-            StreamReader readCsvData = new StreamReader(indiaCensusCSVFilePath);
-            CsvReader loadCsvData = new CsvReader(readCsvData, true);
-            while (loadCsvData.ReadNextRecord())
-            {
-                numberOfRecords++;
-            }
-            return numberOfRecords;
+
         }
 
         public static void LoadIndiaCensusData(string indiaCensusCSVFilePath, char c)
