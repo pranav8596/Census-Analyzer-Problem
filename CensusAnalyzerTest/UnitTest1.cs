@@ -9,11 +9,9 @@ namespace CensusAnalyzerTest
         public const string IndiaCensusCSVFilePath = @"D:\source\repos\CensusAnalyzerProblem\CensusAnalyzerTest\resources\IndiaStateCensusData.csv";
         public const string WrongIndiaCensusCSVFilePath = @"C:\source\repos\CensusAnalyzerProblem\CensusAnalyzerTest\resources\IndiaStateCensusData.csv";
         public const string WrongIndiaCensusCSVFileType = @"D:\source\repos\CensusAnalyzerProblem\CensusAnalyzerTest\resources\IndiaStateCensusData.json";
-
         public const string IndiaStateCodeCSVFilePath = @"D:\source\repos\CensusAnalyzerProblem\CensusAnalyzerTest\resources\IndiaStateCode.csv";
         public const string WrongIndiaStateCodeCSVFilePath = @"C:\source\repos\CensusAnalyzerProblem\CensusAnalyzerTest\resources\IndiaStateCode.csv";        
         public const string WrongIndiaStateCodeCSVFileType = @"D:\source\repos\CensusAnalyzerProblem\CensusAnalyzerTest\resources\IndiaStateCode.json";
-
 
         [SetUp]
         public void Setup()
@@ -69,7 +67,7 @@ namespace CensusAnalyzerTest
         [Test]
         public void GivenIndiaStateCodeFileName_WhenProper_ShouldReturnTotalRecords()
         {
-            int noOfRecords = CensusAnalyzer.LoadIndiaCensusData(IndiaStateCodeCSVFilePath);
+            int noOfRecords = CensusAnalyzer.LoadIndiaStateCodeData(IndiaStateCodeCSVFilePath);
             Assert.AreEqual(37, noOfRecords);
         }
 
@@ -78,7 +76,7 @@ namespace CensusAnalyzerTest
         {
             try
             {
-                CensusAnalyzer.LoadIndiaCensusData(WrongIndiaStateCodeCSVFilePath);
+                CensusAnalyzer.LoadIndiaStateCodeData(WrongIndiaStateCodeCSVFilePath);
             }
             catch (CensusAnalyzerExceptions e)
             {
@@ -91,7 +89,7 @@ namespace CensusAnalyzerTest
         {
             try
             {
-                CensusAnalyzer.LoadIndiaCensusData(WrongIndiaStateCodeCSVFileType);
+                CensusAnalyzer.LoadIndiaStateCodeData(WrongIndiaStateCodeCSVFileType);
             }
             catch (CensusAnalyzerExceptions e)
             {
