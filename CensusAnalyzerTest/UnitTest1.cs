@@ -67,7 +67,7 @@ namespace CensusAnalyzerTest
         [Test]
         public void GivenIndiaStateCodeFileName_WhenProper_ShouldReturnTotalRecords()
         {
-            int noOfRecords = CensusAnalyzer.LoadIndiaStateCodeData(IndiaStateCodeCSVFilePath);
+            int noOfRecords = CensusAnalyzer.LoadIndiaCensusData(IndiaStateCodeCSVFilePath);
             Assert.AreEqual(37, noOfRecords);
         }
 
@@ -76,7 +76,7 @@ namespace CensusAnalyzerTest
         {
             try
             {
-                CensusAnalyzer.LoadIndiaStateCodeData(WrongIndiaStateCodeCSVFilePath);
+                CensusAnalyzer.LoadIndiaCensusData(WrongIndiaStateCodeCSVFilePath);
             }
             catch (CensusAnalyzerExceptions e)
             {
@@ -89,7 +89,7 @@ namespace CensusAnalyzerTest
         {
             try
             {
-                CensusAnalyzer.LoadIndiaStateCodeData(WrongIndiaStateCodeCSVFileType);
+                CensusAnalyzer.LoadIndiaCensusData(WrongIndiaStateCodeCSVFileType);
             }
             catch (CensusAnalyzerExceptions e)
             {
