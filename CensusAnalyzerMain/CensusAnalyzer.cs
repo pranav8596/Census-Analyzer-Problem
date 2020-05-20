@@ -22,20 +22,33 @@ namespace CensusAnalyzerMain
                 {
                     throw new CensusAnalyzerExceptions("CSV file type is Incorrect", CensusAnalyzerExceptions.ExceptionType.WRONG_FILE_TYPE);
                 }               
-                int numberOfRecords = 0;
+                /*int numberOfRecords = 0;
                 StreamReader readCsvData = new StreamReader(indiaCensusCSVFilePath);
                 CsvReader loadCsvData = new CsvReader(readCsvData, true);
                 while (loadCsvData.ReadNextRecord())
                 {
                     numberOfRecords++;
                 }
-                return numberOfRecords;
+                return numberOfRecords*/
+                return GetCount(indiaCensusCSVFilePath);
             }
             catch (DirectoryNotFoundException e)
             {
                 throw new CensusAnalyzerExceptions("CSV file path is Incorrect", CensusAnalyzerExceptions.ExceptionType.WRONG_FILE_PATH);
             }
 
+        }
+
+        public static int GetCount(string indiaCensusCSVFilePath)
+        {
+            int numberOfRecords = 0;
+            StreamReader readCsvData = new StreamReader(indiaCensusCSVFilePath);
+            CsvReader loadCsvData = new CsvReader(readCsvData, true);
+            while (loadCsvData.ReadNextRecord())
+            {
+                numberOfRecords++;
+            }
+            return numberOfRecords;
         }
 
         public static void LoadIndiaCensusData(string indiaCensusCSVFilePath, char c)
