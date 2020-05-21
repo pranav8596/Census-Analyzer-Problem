@@ -18,19 +18,23 @@ namespace CensusAnalyzerTest
         {
         }
 
+        CensusAnalyzer censusAnalyzer = new CensusAnalyzer();
+
         [Test]
         public void GivenIndiaStatesCensusFileName_WhenProper_ShouldReturnTotalRecords()
         {
-            int noOfRecords = CensusAnalyzer.LoadIndiaCensusData(IndiaCensusCSVFilePath);
+            int noOfRecords = censusAnalyzer.LoadIndiaCensusData(IndiaCensusCSVFilePath);
             Assert.AreEqual(29, noOfRecords);
         }
 
         [Test]
         public void GivenIndiaStatesCensusFileName_WhenImProper_ShouldReturnException()
         {
+            CensusAnalyzer censusAnalyzer = new CensusAnalyzer();
+
             try
             {
-                CensusAnalyzer.LoadIndiaCensusData(WrongIndiaCensusCSVFilePath);
+                censusAnalyzer.LoadIndiaCensusData(WrongIndiaCensusCSVFilePath);
             }
             catch (CensusAnalyzerExceptions e)
             {
@@ -43,7 +47,7 @@ namespace CensusAnalyzerTest
         {
             try
             {
-                CensusAnalyzer.LoadIndiaCensusData(WrongIndiaCensusCSVFileType);
+                censusAnalyzer.LoadIndiaCensusData(WrongIndiaCensusCSVFileType);
             }
             catch (CensusAnalyzerExceptions e)
             {
@@ -67,7 +71,7 @@ namespace CensusAnalyzerTest
         [Test]
         public void GivenIndiaStateCodeFileName_WhenProper_ShouldReturnTotalRecords()
         {
-            int noOfRecords = CensusAnalyzer.LoadIndiaCensusData(IndiaStateCodeCSVFilePath);
+            int noOfRecords = censusAnalyzer.LoadIndiaCensusData(IndiaStateCodeCSVFilePath);
             Assert.AreEqual(37, noOfRecords);
         }
 
@@ -76,7 +80,7 @@ namespace CensusAnalyzerTest
         {
             try
             {
-                CensusAnalyzer.LoadIndiaCensusData(WrongIndiaStateCodeCSVFilePath);
+                censusAnalyzer.LoadIndiaCensusData(WrongIndiaStateCodeCSVFilePath);
             }
             catch (CensusAnalyzerExceptions e)
             {
@@ -89,7 +93,7 @@ namespace CensusAnalyzerTest
         {
             try
             {
-                CensusAnalyzer.LoadIndiaCensusData(WrongIndiaStateCodeCSVFileType);
+                censusAnalyzer.LoadIndiaCensusData(WrongIndiaStateCodeCSVFileType);
             }
             catch (CensusAnalyzerExceptions e)
             {

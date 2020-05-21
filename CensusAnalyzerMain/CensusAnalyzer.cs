@@ -8,9 +8,14 @@ using System.Text;
 
 namespace CensusAnalyzerMain
 {
-    public static class CensusAnalyzer
+    public class CensusAnalyzer : ICSVBuilder
     {
-        public static int LoadIndiaCensusData(string indiaCensusCSVFilePath)
+        /// <summary>
+        /// Load the data from the csv file
+        /// </summary>
+        /// <param name="indiaCensusCSVFilePath"></param>
+        /// <returns></returns>
+        public int LoadIndiaCensusData(string indiaCensusCSVFilePath)
         {
             try
             {
@@ -21,15 +26,9 @@ namespace CensusAnalyzerMain
                 if (typeOfFile != expectedType)
                 {
                     throw new CensusAnalyzerExceptions("CSV file type is Incorrect", CensusAnalyzerExceptions.ExceptionType.WRONG_FILE_TYPE);
-                }               
-                /*int numberOfRecords = 0;
-                StreamReader readCsvData = new StreamReader(indiaCensusCSVFilePath);
-                CsvReader loadCsvData = new CsvReader(readCsvData, true);
-                while (loadCsvData.ReadNextRecord())
-                {
-                    numberOfRecords++;
                 }
-                return numberOfRecords*/
+                ICSVBuilder CSVBuilder = CSVBuilderFactory.createCSVBuilder();
+               // CSVBuilder.LoadIndiaCensusData
                 return GetCount(indiaCensusCSVFilePath);
             }
             catch (DirectoryNotFoundException e)
@@ -39,6 +38,11 @@ namespace CensusAnalyzerMain
 
         }
 
+        /// <summary>
+        /// Get the count of number of records
+        /// </summary>
+        /// <param name="indiaCensusCSVFilePath"></param>
+        /// <returns></returns>
         public static int GetCount(string indiaCensusCSVFilePath)
         {
             int numberOfRecords = 0;
@@ -51,6 +55,11 @@ namespace CensusAnalyzerMain
             return numberOfRecords;
         }
 
+        /// <summary>
+        /// Check if the csv file has the correct delimiter
+        /// </summary>
+        /// <param name="indiaCensusCSVFilePath"></param>
+        /// <param name="c"></param>
         public static void LoadIndiaCensusData(string indiaCensusCSVFilePath, char c)
         {
             StreamReader readCsvData = new StreamReader(indiaCensusCSVFilePath);
