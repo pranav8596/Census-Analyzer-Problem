@@ -4,6 +4,7 @@ using System.Text;
 
 namespace CensusAnalyzerMain
 {
+
     interface ICSVBuilder
     {
         int LoadIndiaCensusData(string indiaCensusCSVFilePath);

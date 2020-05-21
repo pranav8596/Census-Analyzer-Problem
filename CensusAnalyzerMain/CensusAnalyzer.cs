@@ -25,15 +25,14 @@ namespace CensusAnalyzerMain
 
                 if (typeOfFile != expectedType)
                 {
-                    throw new CensusAnalyzerExceptions("CSV file type is Incorrect", CensusAnalyzerExceptions.ExceptionType.WRONG_FILE_TYPE);
+                    throw new CSVBuilderException("CSV file type is Incorrect", CSVBuilderException.ExceptionType.WRONG_FILE_TYPE);
                 }
                 ICSVBuilder CSVBuilder = CSVBuilderFactory.createCSVBuilder();
-               // CSVBuilder.LoadIndiaCensusData
                 return GetCount(indiaCensusCSVFilePath);
             }
             catch (DirectoryNotFoundException e)
             {
-                throw new CensusAnalyzerExceptions("CSV file path is Incorrect", CensusAnalyzerExceptions.ExceptionType.WRONG_FILE_PATH);
+                throw new CSVBuilderException("CSV file path is Incorrect", CSVBuilderException.ExceptionType.WRONG_FILE_PATH);
             }
 
         }
@@ -67,7 +66,7 @@ namespace CensusAnalyzerMain
             char delimiter = loadCsvData.Delimiter;
             if (delimiter != c)
             {
-                throw new CensusAnalyzerExceptions("CSV file delimiter is Incorrect", CensusAnalyzerExceptions.ExceptionType.WRONG_FILE_DELIMITER);
+                throw new CSVBuilderException("CSV file delimiter is Incorrect", CSVBuilderException.ExceptionType.WRONG_FILE_DELIMITER);
             }
         }
     }

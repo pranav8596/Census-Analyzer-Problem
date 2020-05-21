@@ -36,9 +36,9 @@ namespace CensusAnalyzerTest
             {
                 censusAnalyzer.LoadIndiaCensusData(WrongIndiaCensusCSVFilePath);
             }
-            catch (CensusAnalyzerExceptions e)
+            catch (CSVBuilderException e)
             {
-                Assert.AreEqual(CensusAnalyzerExceptions.ExceptionType.WRONG_FILE_PATH, e.type);
+                Assert.AreEqual(CSVBuilderException.ExceptionType.WRONG_FILE_PATH, e.type);
             }
         }
 
@@ -49,9 +49,9 @@ namespace CensusAnalyzerTest
             {
                 censusAnalyzer.LoadIndiaCensusData(WrongIndiaCensusCSVFileType);
             }
-            catch (CensusAnalyzerExceptions e)
+            catch (CSVBuilderException e)
             {
-                Assert.AreEqual(CensusAnalyzerExceptions.ExceptionType.WRONG_FILE_TYPE, e.type);
+                Assert.AreEqual(CSVBuilderException.ExceptionType.WRONG_FILE_TYPE, e.type);
             }
         }
 
@@ -62,9 +62,9 @@ namespace CensusAnalyzerTest
             {
                 CensusAnalyzer.LoadIndiaCensusData(IndiaCensusCSVFilePath, ';');
             }
-            catch (CensusAnalyzerExceptions e)
+            catch (CSVBuilderException e)
             {
-                Assert.AreEqual(CensusAnalyzerExceptions.ExceptionType.WRONG_FILE_DELIMITER, e.type);
+                Assert.AreEqual(CSVBuilderException.ExceptionType.WRONG_FILE_DELIMITER, e.type);
             }
         }
 
@@ -82,9 +82,9 @@ namespace CensusAnalyzerTest
             {
                 censusAnalyzer.LoadIndiaCensusData(WrongIndiaStateCodeCSVFilePath);
             }
-            catch (CensusAnalyzerExceptions e)
+            catch (CSVBuilderException e)
             {
-                Assert.AreEqual(CensusAnalyzerExceptions.ExceptionType.WRONG_FILE_PATH, e.type);
+                Assert.AreEqual(CSVBuilderException.ExceptionType.WRONG_FILE_PATH, e.type);
             }
         }
 
@@ -95,9 +95,9 @@ namespace CensusAnalyzerTest
             {
                 censusAnalyzer.LoadIndiaCensusData(WrongIndiaStateCodeCSVFileType);
             }
-            catch (CensusAnalyzerExceptions e)
+            catch (CSVBuilderException e)
             {
-                Assert.AreEqual(CensusAnalyzerExceptions.ExceptionType.WRONG_FILE_TYPE, e.type);
+                Assert.AreEqual(CSVBuilderException.ExceptionType.WRONG_FILE_TYPE, e.type);
             }
         }
 
@@ -108,9 +108,9 @@ namespace CensusAnalyzerTest
             {
                 CensusAnalyzer.LoadIndiaCensusData(IndiaStateCodeCSVFilePath, ';');
             }
-            catch (CensusAnalyzerExceptions e)
+            catch (CSVBuilderException e)
             {
-                Assert.AreEqual(CensusAnalyzerExceptions.ExceptionType.WRONG_FILE_DELIMITER, e.type);
+                Assert.AreEqual(CSVBuilderException.ExceptionType.WRONG_FILE_DELIMITER, e.type);
             }
         }
 
